@@ -1,0 +1,63 @@
+UpdateID: 2872430272
+
+Description:
+[h1]The One and Only Deck Builder[/h1]
+This is a map to demonstrate a deck builder I created.
+Some time ago I struggled with the problem of implementing a deck builder. After a little tests I found the best solution for me, which comes with little to zero lags.
+I implemented it in the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2526757138]Isaac: Four Souls[/url] project I am currently working on. But I heared a lot of people have problems with the deck building in TTS because it is not very well supported.
+
+Now I present what I think is one of the best solutions for building decks. My version is heavely based on the TTS cut() function.
+This map will present 2 versions of the deck builder.
+[olist]
+ [*] The first version is pretty fast and builds decks out of so called Pre-Decks (later more)
+ [*] The second version is the same as the first version but you can add filters for each deck to exclude some type of cards. The second version is a little bit slower and creates short lags but nothing compared to the freezing, which appears if you draw each card separately to build the deck.
+[/olist]
+
+[hr][/hr]
+[h2]Scenario for the standard deck builder[/h2]
+The deck builder is build to work with so called Pre-Decks.
+Pre-Decks are decks or single cards which exists before the deck builder is started. Each deck build by the deck builder consists of multiple cards from each Pre-Deck for this deck.
+Each Pre-Deck represents a stack of cards from one specific card type.
+A deck is defined by its ratio. The ratio is a table of numbers for each card type. The deck builder ensures that only this much cards from this type will be mixed into the deck.
+Each deck should have its own Pre-Decks.
+
+[h2]Scenario for filters[/h2]
+If you want to exclude some cards (for example in different game modes), you can do this by using the filter option.
+Filters can be static or dynamic. You can set them at any time. The deck builder will then select only cards which pass your filter settings. Filters can be applied for each deck individually.
+You can filter out cards by their tags or by their name, aswell as by certain variable values in their scripts.
+
+[hr][/hr]
+[h2]Contents[/h2]
+You can find three checkers (red, white, black). Each checker contains a part of the deck building process.
+[list]
+ [*][b][u]RED:[/u][/b] This script represents your setup script for the game. It is the Entry point to the deck builder and the exit point to which the deck builder is going to come back after it is done.
+ [*][b][u]WHITE:[/u][/b] This script handles and manages the Pre-Decks. You only have to do some slight configurations if you import it in your project.
+ [*][b][u]BLACK:[/u][/b] This script contains the main logic for the deck builder. In this script you can fully customize your deck builder. You will find some example filters and deck ratios.
+[/list]
+
+[hr][/hr]
+[h2]How to implement this deck builder in your project![/h2]
+[olist]
+ [*] Save the white and black checker and import them into your project.
+ [*] Configure your deck builder (type in your Pre-Deck guids and the deck ratios and opitonal your filters)
+ [*] Add the call of the deck builder to your setup script and implement the callback function after the deck builder is done.
+[/olist]
+
+[h2]How we use this deck builder![/h2]
+[list]
+ [*] All the Pre-Decks are stored in a "Pre-Deck-Bag".
+ [*] There is a Pre-Deck-Bag for each language. 
+ [*] If the player select the language, all Pre-Decks will be pulled out of the corresponding Pre-Deck-Bag and placed somewhere, where the player can't see them.
+ [*] If the player start the game (for example throgh a click an a start button), the deck builder is called and will build the decks.
+ [*] If the deck builder finished its job, it will call a function which deals cards from the build decks or reveal the first cards from some decks, etc.
+[/list]
+
+[hr][/hr]
+So that's it. I hope you like it. Feel free to do what every you want with these scripts.
+Please, give me some credits if you use them :D
+
+[h2] Other Projects [/h2]
+[list]
+ [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2526757138]Isaac: Four Souls[/url]
+ [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2828779531]Script Injector[/url]
+[/list]
